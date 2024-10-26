@@ -33,16 +33,17 @@ public class Encoder {
         int indexInAlphabetString, indexI, indexJ = -1;
         String out = "";
         for (int i = 0; i < text.length(); i++) {
+            if (text.charAt(i) == ' ') {
+                out += "| ";
+                continue;
+            }
+
             indexInAlphabetString = alphabet.indexOf(text.charAt(i));
             indexI = indexInAlphabetString / 6;
 
             String temp = new String(alphabetSquare[indexI]);
             indexJ = temp.indexOf(text.charAt(i));
 
-            if (text.charAt(i) == ' ') {
-                out += "| ";
-                continue;
-            }
             out += String.format("%d%d ", indexI + 1, indexJ + 1);
         }
         String trimmedOut = out.trim();
